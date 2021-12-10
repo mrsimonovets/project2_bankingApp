@@ -1,3 +1,4 @@
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -51,7 +52,7 @@ public class Loan {
 
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         return "Registration date: " + sdf.format(registrationDate) + "\n" +
                 "Sum: " + sum + "\n" +
                 "Interest rate: " + interestRate + "\n" +

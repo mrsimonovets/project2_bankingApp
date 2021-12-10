@@ -1,8 +1,13 @@
+import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String name;
     private String surname;
 
@@ -12,8 +17,8 @@ public class User {
     private String email;
     private String password;
 
-    private ArrayList<String> creditList = new ArrayList<>();
-    private ArrayList<String> cardList = new ArrayList<>();
+    private List<String> creditList = new ArrayList<>();
+    private List<String> cardList = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -63,7 +68,7 @@ public class User {
         this.password = password;
     }
 
-    public ArrayList<String> getCreditList() {
+    public List<String> getCreditList() {
         return creditList;
     }
 
@@ -71,7 +76,7 @@ public class User {
         this.creditList = creditList;
     }
 
-    public ArrayList<String> getCardList() {
+    public List<String> getCardList() {
         return cardList;
     }
 
@@ -81,7 +86,7 @@ public class User {
 
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        DateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 
         String gender1;
 
