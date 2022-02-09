@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
 
     private String name;
     private String surname;
@@ -17,8 +16,17 @@ public class User implements Serializable {
     private String email;
     private String password;
 
-    private List<String> creditList = new ArrayList<>();
-    private List<String> cardList = new ArrayList<>();
+    private List<Loan> loans = new ArrayList<>();
+    private List<DebitCard> cards = new ArrayList<>();
+
+    public User(String name, String surname, Date birthDate, boolean gender, String email, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.email = email;
+        this.password = password;
+    }
 
     public String getName() {
         return name;
@@ -68,20 +76,20 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public List<String> getCreditList() {
-        return creditList;
+    public List<Loan> getLoans() {
+        return loans;
     }
 
-    public void setCreditList(ArrayList<String> creditList) {
-        this.creditList = creditList;
+    public void setLoans(List<Loan> loans) {
+        this.loans = loans;
     }
 
-    public List<String> getCardList() {
-        return cardList;
+    public List<DebitCard> getCards() {
+        return cards;
     }
 
-    public void setCardList(ArrayList<String> cardList) {
-        this.cardList = cardList;
+    public void setCards(List<DebitCard> cards) {
+        this.cards = cards;
     }
 
     @Override
@@ -93,20 +101,25 @@ public class User implements Serializable {
         if (gender) gender1 = "male";
         else gender1 = "female";
 
-        return  "First name: " + name + "\n" +
+        String s1 = "First name: " + name + "\n" +
                 "Last name: " + surname + "\n" +
                 "Birth date: " + sdf.format(birthDate) + "\n" +
                 "Gender: " + gender1 + "\n" +
                 "Email: " + email + "\n" +
-                "Password: " + password ;
-    }
+                "Password: " + password + "\n";
 
-    public User(String name, String surname, Date birthDate, boolean gender, String email, String password) {
-        this.name = name;
-        this.surname = surname;
-        this.birthDate = birthDate;
-        this.gender = gender;
-        this.email = email;
-        this.password = password;
+
+        StringBuilder s2 = new StringBuilder("Loan List: \n");
+        loans.stream().forEach(loan -> {
+            s2.append(loan).append(" ");
+        });
+
+        StringBuilder s3 = new StringBuilder("Card List: \n");
+        cards.stream().forEach(debitCard -> {
+            s3.append(debitCard).append(" ");
+        });
+
+
+        return s1+s2+s3;
     }
 }

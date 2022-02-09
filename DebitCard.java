@@ -1,18 +1,22 @@
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DebitCard {
+public class DebitCard implements Serializable {
     private double balance;
     private String cardNumber;
     private Date expirationDate;
     private int cvv;
 
-    public double getBalance() {
-        return balance;
+    public DebitCard(double balance, String cardNumber, Date expirationDate, int cvv) {
+        this.balance = balance;
+        this.cardNumber = cardNumber;
+        this.expirationDate = expirationDate;
+        this.cvv = cvv;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public double getBalance() {
+        return balance;
     }
 
     public String getCardNumber() {
@@ -47,4 +51,5 @@ public class DebitCard {
                 "Expiration date: " + sdf.format(expirationDate) + "\n" +
                 "CVV: " + cvv;
     }
+
 }

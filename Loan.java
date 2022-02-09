@@ -1,13 +1,23 @@
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Loan {
+public class Loan implements Serializable {
     private Date registrationDate;
     private double sum;
     private double interestRate;
     private int creditTerm;
     private double monthlyPayment;
+
+
+    public Loan(Date registrationDate, double sum, double interestRate, int creditTerm, double monthlyPayment) {
+        this.registrationDate = registrationDate;
+        this.sum = sum;
+        this.interestRate = interestRate;
+        this.creditTerm = creditTerm;
+        this.monthlyPayment = monthlyPayment;
+    }
 
 
     public Date getRegistrationDate() {
@@ -57,11 +67,7 @@ public class Loan {
                 "Sum: " + sum + "\n" +
                 "Interest rate: " + interestRate + "\n" +
                 "Credit term: " + creditTerm + "\n" +
-                "Monthly payment: " + monthlyPayment;
+                "Monthly payment: " + monthlyPayment + "\n";
     }
 
-    public Loan(Date registrationDate, double sum) {
-        this.registrationDate = registrationDate;
-        this.sum = sum;
-    }
 }
